@@ -32,4 +32,12 @@
     width: 150px;
     height: 40px;
     border-radius: 20px;
+    border: solid 3px;
+    font-size: 18px;
+    transition: 2s;
 }
+.calculadora:hover{
+    background-color: cornflowerblue;
+    color: white;
+}
+

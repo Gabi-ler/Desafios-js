@@ -93,8 +93,8 @@ while(salida != 'NO') {
     resultado.push(calculador())
     salida = prompt('Desea hacer otro cálculo? SI o NO').toUpperCase()
 }
-// console.log(resultado)
 alert('Gracias por usar nuestro calculador')
+console.log(resultado)
 
 
 /*function boton() {
@@ -108,13 +108,15 @@ alert('Gracias por usar nuestro calculador')
     alert('Gracias por usar nuestro calculador')
 }*/
 //Agregar IVA A LA CUOTA 
-resultado.forEach((banco) => {
+//============================================Pre-entrega=========================================
+/*resultado.forEach((banco) => {
     let iva = 1.21
     return (banco.cuota *= iva)
 })
-console.log(resultado);
-alert(resultado)
+// console.log(resultado);*/
 
+const calculoBuscado = resultado.filter((prestamo) => prestamo.monto == 100000)
+console.log(calculoBuscado);
 //intentar mostrar las distintos calculos que hizo el cliente sobre sus prestamos y que despues úeda ver cual le convienetu
 //MIRAR LA DIAPOSITIVA 7 QUE SALE UN EJEMPLO DE FUNCION SUPERIOR PRARA ACUMULAR LOS OBJTOS
 

@@ -54,7 +54,7 @@ class Banco {
         this.monto = monto
         this.cantCuotas = cantCuotas
         this.interes = interes
-        this.cuotas = cuota
+        this.cuota = cuota
     }
 }
 
@@ -83,27 +83,38 @@ const calculador = () => {
     cuota = cuotas(interes, cantCuotas)
     alert('Usted va a devolver un total de ' + interes)
     alert('En ' + cantCuotas + ' cuotas de ' + cuota )
+    
     const impCalculados = new Banco(monto, cantCuotas, interes, cuota)
     return impCalculados
 }
 
-/*let resultado = []
+let resultado = []
 while(salida != 'NO') {
     resultado.push(calculador())
     salida = prompt('Desea hacer otro cálculo? SI o NO').toUpperCase()
 }
-console.log(resultado)
-alert('Gracias por usar nuestro calculador')*/
+// console.log(resultado)
+alert('Gracias por usar nuestro calculador')
 
 
-function boton() {
+/*function boton() {
     let resultado = []
     while(salida != 'NO') {
         resultado.push(calculador())
         salida = prompt('Desea hacer otro cálculo? SI o NO').toUpperCase()
     }
     
-console.log(resultado)
-alert('Gracias por usar nuestro calculador')
-}
+    // console.log(resultado)
+    alert('Gracias por usar nuestro calculador')
+}*/
+//Agregar IVA A LA CUOTA 
+resultado.forEach((banco) => {
+    let iva = 1.21
+    return (banco.cuota *= iva)
+})
+console.log(resultado);
+alert(resultado)
+
 //intentar mostrar las distintos calculos que hizo el cliente sobre sus prestamos y que despues úeda ver cual le convienetu
+//MIRAR LA DIAPOSITIVA 7 QUE SALE UN EJEMPLO DE FUNCION SUPERIOR PRARA ACUMULAR LOS OBJTOS
+

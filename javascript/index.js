@@ -1,53 +1,5 @@
-// let cantidad = Number(prompt('Cuantas veces deseas cambiarle el apellido a Luna?'))
-// let nombre = 'Luna'
-// let apellidos = ''
-// for (let i = 0; i >= cantidad; i++) {
-//     apellidos = prompt('que apellido desea elegirle')
-//     let nombreCompleto = nombre + ' ' + apellidos
-//     alert(nombreCompleto)
-// }
 
-/*let apellido = prompt('Adivina el apellido de Luna').toUpperCase
-while (apellido != 'Rico') {
-    apellido = prompt('No adivinaste, ingresa otro') ; 
-}
-alert('Muy bien!! adivinaste, su apellido es Rico')*/
-
-
-//=================================Desafio entregable 1=========================================
-/*function financiacion(num1, num2, num3, num4) {  
-    return num1 * (num2 + num3 * num4)
-}
-
-function cuotas(montoFinal, cuotas) {
-    return montoFinal / cuotas
-}
-
-const tasa = 0.045
-const num = 1
-let monto;
-let cantCuotas;
-let interes;
-let cuota;
-let salida;
-
-function calculador() {
-    monto = Number(prompt('Indique el monto que desea financiar'))
-    if (monto === 0) return
-    cantCuotas = Number(prompt('Ingrese la cantidad de cuotas en la cual desea financiar'))
-    interes = financiacion(monto, num, tasa, cantCuotas)
-    cuota = cuotas(interes,cantCuotas)
-    alert('Usted va a devolver un total de ' + interes)
-    alert('En ' + cantCuotas + ' cuotas de ' + cuota )
-    alert('Gracias por usar nuestro calculador')
-}//Si descomentas este alert y comentas el while el calculador funciona con el boton html
-
-/*while(salida != 'NO') {
-    calculador()
-    salida = prompt('Desea hacer otro cálculo? SI o NO').toUpperCase()
-}
-alert('Gracias por usar nuestro calculador')*/
-//========================Desafio complementario 2===========================
+//========================Desafio complementario 3===========================
 
 class Banco {
     constructor(monto, cantCuotas, interes, cuota) {
@@ -56,7 +8,13 @@ class Banco {
         this.interes = interes
         this.cuota = cuota
     }
+    // iva() {
+    //     let iva = 1.21
+    //     this.cuota = cuota += iva
+    //     console.log(this.cuota);
+    // }
 }
+
 
 function financiacion(num1, num2, num3, num4) {
     return num1 * (num2 + num3 * num4)
@@ -94,29 +52,25 @@ while(salida != 'NO') {
     salida = prompt('Desea hacer otro cálculo? SI o NO').toUpperCase()
 }
 alert('Gracias por usar nuestro calculador')
-console.log(resultado)
 
-
-/*function boton() {
-    let resultado = []
-    while(salida != 'NO') {
-        resultado.push(calculador())
-        salida = prompt('Desea hacer otro cálculo? SI o NO').toUpperCase()
-    }
-    
-    // console.log(resultado)
-    alert('Gracias por usar nuestro calculador')
-}*/
-//Agregar IVA A LA CUOTA 
-//============================================Pre-entrega=========================================
-/*resultado.forEach((banco) => {
-    let iva = 1.21
-    return (banco.cuota *= iva)
-})
-// console.log(resultado);*/
-
-const calculoBuscado = resultado.filter((prestamo) => prestamo.monto == 100000)
-console.log(calculoBuscado);
+///////////LE AGREGO UN FILTER SUPONIENDO QUE EL USUARIO HIZO UN CALCULO DE  UN MONTO DE 100000 PARA VOLVERLO A VISUALIZAR
+// const calculoBuscado = resultado.filter((prestamo) => prestamo.monto == 100000)
+// console.log(calculoBuscado);
 //intentar mostrar las distintos calculos que hizo el cliente sobre sus prestamos y que despues úeda ver cual le convienetu
 //MIRAR LA DIAPOSITIVA 7 QUE SALE UN EJEMPLO DE FUNCION SUPERIOR PRARA ACUMULAR LOS OBJTOS
+const section = document.querySelector('#visualCalculos')
+const temp = document.querySelector('template')
 
+const list = temp.content.querySelector('div ol')
+
+
+resultado.forEach(elem => {
+    let listClonada = list.cloneNode(list, true)
+    console.log(listClonada.children[0].innerText);
+    listClonada.children[0].innerText = 'Su prestamo es ' + elem.monto //li
+    listClonada.children[1].innerText = 'En ' + elem.cantCuotas + ' cuotas'//l
+    listClonada.children[2].innerText = 'Vas a devolver ' + elem.interes//li
+    listClonada.children[3].innerText = 'En ' + elem.cuota + ' cuotas' //li
+    
+    section.appendChild(listClonada)
+});

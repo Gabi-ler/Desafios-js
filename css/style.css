@@ -20,7 +20,7 @@
     padding-top: 20px;
 }
 
-.boton-calcu{
+.botonCalcu{
     padding-top: 25px;
     display: flex;
     justify-content: center;
@@ -39,5 +39,20 @@
 .calculadora:hover{
     background-color: cornflowerblue;
     color: white;
+}
+
+.visualCalculos{
+    display: flex;
+}
+
+.opCalculadas ol li{
+    display: inline;
+    background-color: beige;
+    padding-left: 25px;
+}
+
+.opCalculadas button{
+    margin-left: 70px;
+    justify-content:end;
 }
 

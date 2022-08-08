@@ -17,9 +17,22 @@
     <main>
         <section class="hero-section">
             <h1 class="titulo-princ">Cotizador de prestamos</h1>
-            <div class="boton-calcu">
-                <button type="button" class="calculadora" onclick="boton();">Abrir calculador</button>
+            <div class="botonCalcu">
+                <!-- <button type="button" class="calculadora" onclick="boton();">Abrir calculador</button> -->
             </div>
+        </section>
+        <section id="visualCalculos">
+            <template>
+                <div class="opCalculadas">
+                    <ol>
+                        <li>Valor del prestamo</li>
+                        <li>Cantidad de cuotas</li>
+                        <li>Monto total</li>
+                        <li>Valor de cuota</li>
+                        <button>Adquirir</button>
+                    </ol>
+                </div>
+            </template>
         </section>
     </main>
 </body>

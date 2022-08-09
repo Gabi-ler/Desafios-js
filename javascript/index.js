@@ -70,7 +70,7 @@ resultado.forEach((elem) => {
     listClonada.children[0].innerText = 'Su prestamo es de ' + elem.monto //li
     listClonada.children[1].innerText = 'En ' + elem.cantCuotas + ' cuotas'//l
     listClonada.children[2].innerText = 'Vas a devolver ' + elem.interes//li
-    listClonada.children[3].innerText = 'En ' + elem.cuota + ' cuotas' //li
+    listClonada.children[3].innerText = 'En ' + cantCuotas + ' de ' + elem.cuota //li
     
     section.appendChild(listClonada)
 })

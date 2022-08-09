@@ -6,9 +6,7 @@
 
 .hero-section{
     width: 100%;
-    height: 500px;
     background-color:gold;
-    border: solid 2px black;
     justify-content: center;
 }
 
@@ -19,6 +17,39 @@
     /* justify-content: center; */
     padding-top: 20px;
 }
+
+.formulario{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.lista{
+    border: solid black;
+    justify-content: space-between;
+    width: 600px;
+}
+
+.lista p {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.inputs{
+    border: solid 2px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+}
+
+.inputs input {
+    margin-bottom: 20px;
+    width: 450px;
+    height: 30px;
+}
+
 
 .botonCalcu{
     padding-top: 25px;
@@ -43,15 +74,16 @@
 
 .visualCalculos{
     display: flex;
+    background-color: cornflowerblue;
 }
 
-.opCalculadas ol li{
+.op-list {
     display: inline;
     background-color: beige;
     padding-left: 25px;
 }
 
-.opCalculadas button{
+.op-list button{
     margin-left: 70px;
     justify-content:end;
 }

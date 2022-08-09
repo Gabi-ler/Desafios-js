@@ -61,16 +61,16 @@ alert('Gracias por usar nuestro calculador')
 const section = document.querySelector('#visualCalculos')
 const temp = document.querySelector('template')
 
-const list = temp.content.querySelector('div ol')
+const list = temp.content.querySelector('div');
 
 
-resultado.forEach(elem => {
-    let listClonada = list.cloneNode(list, true)
+resultado.forEach((elem) => {
+    let listClonada = list.cloneNode(list,true);
     console.log(listClonada.children[0].innerText);
-    listClonada.children[0].innerText = 'Su prestamo es ' + elem.monto //li
+    listClonada.children[0].innerText = 'Su prestamo es de ' + elem.monto //li
     listClonada.children[1].innerText = 'En ' + elem.cantCuotas + ' cuotas'//l
     listClonada.children[2].innerText = 'Vas a devolver ' + elem.interes//li
     listClonada.children[3].innerText = 'En ' + elem.cuota + ' cuotas' //li
     
     section.appendChild(listClonada)
-});
+})

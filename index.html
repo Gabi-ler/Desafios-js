@@ -6,35 +6,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <script src="./javascript/index.js"></script>
     <title>Document</title>
 </head>
 
 <body>
     <header>
-
+        
     </header>
     <main>
         <section class="hero-section">
             <h1 class="titulo-princ">Cotizador de prestamos</h1>
+            <div class="formulario">
+                <div class="lista">
+                    <p>Ingrese el importe del prestamo</p>
+                    <p>Ingrese la cantidad de cuotas 12 / 24 / 36 / 48 </p>
+                    <p>Monto final a devolver</p>
+                    <p>Cantidad de cuota y monto</p>
+                </div>
+                <div class="inputs">
+                    <input type="number" id="monto">
+                    <input type="number" id="cuotas">
+                    <input type="number" id="interes">
+                    <input type="number" id="cuotaDevolucion">
+                </div>
+            </div>
+            <!-- <div class="mb-3 row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="inputPassword">
+                </div> 
+            </div>-->
             <div class="botonCalcu">
-                <!-- <button type="button" class="calculadora" onclick="boton();">Abrir calculador</button> -->
+                <button type="button" class="calculadora" onclick="">Calcular</button>
             </div>
         </section>
         <section id="visualCalculos">
             <template>
-                <div class="opCalculadas">
-                    <ol>
-                        <li>Valor del prestamo</li>
-                        <li>Cantidad de cuotas</li>
-                        <li>Monto total</li>
-                        <li>Valor de cuota</li>
-                        <button>Adquirir</button>
-                    </ol>
+                <div class="op-list">
+                    <p>Valor del prestamo</p>
+                    <p>Cantidad de cuotas</p>
+                    <p>Monto total</p>
+                    <p>Valor de cuota</p>
+                    <button>Adquirir</button>
                 </div>
             </template>
+            <div id=""></div>
         </section>
     </main>
+    <script src="./javascript/index.js"></script>
 </body>
 
 </html>

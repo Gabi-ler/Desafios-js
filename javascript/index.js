@@ -38,7 +38,39 @@ const calculador = () => {
 }
 
 //Probando con evento del form
-const inputMonto = document.querySelector('#monto')
+
+let resultado = []
+let form = document.getElementById("datos")
+form.addEventListener("submit", (e)=>{
+    e.preventDefault()
+    monto = document.querySelector('#monto').value
+    console.log(monto)
+    cantCuotas = document.querySelector('#cuotas').value
+    console.log(cantCuotas)
+    resultado.push(calculador())
+    console.log(resultado)
+
+    const section = document.querySelector('#visualCalculos')
+    const temp = document.querySelector('template')
+    
+    const list = temp.content.querySelector('div');
+    console.log("esta es la list",list)
+    
+
+    const ultimoResultado = resultado[resultado.length-1]
+        let listClonada = list.cloneNode(list,true);
+        console.log("esta es la lista clonada",listClonada)
+        console.log("este es el children 0",listClonada.children[0].innerText);
+        listClonada.children[0].innerText = 'Su prestamo es de ' + ultimoResultado.monto //li
+        listClonada.children[1].innerText = 'Vas a devolver ' + ultimoResultado.interes//li
+        listClonada.children[2].innerText = 'En ' + ultimoResultado.cantCuotas + ' cuotas de ' + ultimoResultado.cuota //li
+        
+        section.appendChild(listClonada)
+})
+
+
+/* const inputMonto = document.querySelector('#monto').value
+
 const inputCuotas = document.querySelector('#cuotas')
 const form = document.querySelector('#datos')
 
@@ -48,10 +80,10 @@ form.addEventListener("submit", (e) => {
     e.preventDefault()
 
     monto = inputMonto.value
-    cantCcuotas = inputCuotas.value
+    cantCuotas = inputCuotas.value
     calculador()
     resultado.push(calculador())
-})
+}) */
 
 
 ///////////LE AGREGO UN FILTER SUPONIENDO QUE EL USUARIO HIZO UN CALCULO DE  UN MONTO DE 100000 PARA VOLVERLO A VISUALIZAR
@@ -59,19 +91,5 @@ form.addEventListener("submit", (e) => {
 // console.log(calculoBuscado);
 //intentar mostrar las distintos calculos que hizo el cliente sobre sus prestamos y que despues úeda ver cual le convienetu
 //MIRAR LA DIAPOSITIVA 7 QUE SALE UN EJEMPLO DE FUNCION SUPERIOR PRARA ACUMULAR LOS OBJTOS
-const section = document.querySelector('#visualCalculos')
-const temp = document.querySelector('template')
-
-const list = temp.content.querySelector('div');
 
 
-resultado.forEach((elem) => {
-    let listClonada = list.cloneNode(list,true);
-    console.log(listClonada.children[0].innerText);
-    listClonada.children[0].innerText = 'Su prestamo es de ' + elem.monto //li
-    listClonada.children[1].innerText = 'En ' + elem.cantCuotas + ' cuotas'//l
-    listClonada.children[2].innerText = 'Vas a devolver ' + elem.interes//li
-    listClonada.children[3].innerText = 'En ' + elem.cantCuotas + ' cuotas de ' + elem.cuota //li
-    
-    section.appendChild(listClonada)
-})

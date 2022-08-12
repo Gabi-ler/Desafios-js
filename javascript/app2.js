@@ -36,12 +36,11 @@ const calculador = () => {
 }
 
 let resultado = []
-resultado.push(calculador())
-alert('Gracias por usar nuestro calculador')
-/*while (salida != 'NO') {
+while (salida != 'NO') {
     resultado.push(calculador())
     salida = prompt('Desea hacer otro cálculo? SI o NO').toUpperCase()
-}*/
+}
+alert('Gracias por usar nuestro calculador')
 
 const section = document.querySelector('#visualCalculos')
 const temp = document.querySelector('template')

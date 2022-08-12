@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <title>Document</title>
+    <title>Desafios</title>
 </head>
 
 <body>
@@ -20,15 +20,14 @@
                 <div class="lista">
                     <p>Ingrese el importe del prestamo</p>
                     <p>Ingrese la cantidad de cuotas 12 / 24 / 36 / 48 </p>
-                    <p>Monto final a devolver</p>
-                    <p>Cantidad de cuota y monto</p>
                 </div>
-                <div class="inputs">
+                <form id="datos" class="inputs">
                     <input type="number" id="monto">
                     <input type="number" id="cuotas">
-                    <input type="number" id="interes">
-                    <input type="number" id="cuotaDevolucion">
-                </div>
+                </form>
+            </div>
+            <div class="botonCalcu">
+                <button id="btn-submit" type="submit" class="calculadora">Calcular</button>
             </div>
             <!-- <div class="mb-3 row">
                 <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
@@ -36,15 +35,11 @@
                     <input type="password" class="form-control" id="inputPassword">
                 </div> 
             </div>-->
-            <div class="botonCalcu">
-                <button type="button" class="calculadora" onclick="">Calcular</button>
-            </div>
         </section>
         <section id="visualCalculos">
             <template>
                 <div class="op-list">
                     <p>Valor del prestamo</p>
-                    <p>Cantidad de cuotas</p>
                     <p>Monto total</p>
                     <p>Valor de cuota</p>
                     <button>Adquirir</button>
@@ -53,7 +48,7 @@
             <div id=""></div>
         </section>
     </main>
-    <script src="./javascript/index.js"></script>
+    <script src="./javascript/app2.js"></script>
 </body>
 
 </html>

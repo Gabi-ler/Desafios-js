@@ -8,11 +8,6 @@ class Banco {
         this.interes = interes
         this.cuota = cuota
     }
-    // iva() {
-    //     let iva = 1.21
-    //     this.cuota = cuota += iva
-    //     console.log(this.cuota);
-    // }
 }
 
 
@@ -33,25 +28,31 @@ let cuota;
 let salida;
 
 const calculador = () => {
-    monto = Number(prompt('Indique el monto que desea financiar'))
     if (monto === 0) return(alert('Monto invalido'))
-    cantCuotas = Number(prompt('Ingrese la cantidad de cuotas: 12 / 24 / 36 / 48'))
     if (cantCuotas != 12 && cantCuotas != 24 && cantCuotas != 36 && cantCuotas != 48) return(alert('Monto invalido de cuotas'))
     interes = financiacion(monto, num, tasa, cantCuotas)
     cuota = cuotas(interes, cantCuotas)
-    alert('Usted va a devolver un total de ' + interes)
-    alert('En ' + cantCuotas + ' cuotas de ' + cuota )
     
     const impCalculados = new Banco(monto, cantCuotas, interes, cuota)
     return impCalculados
 }
 
+//Probando con evento del form
+const inputMonto = document.querySelector('#monto')
+const inputCuotas = document.querySelector('#cuotas')
+const form = document.querySelector('#datos')
+
 let resultado = []
-while(salida != 'NO') {
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault()
+
+    monto = inputMonto.value
+    cantCcuotas = inputCuotas.value
+    calculador()
     resultado.push(calculador())
-    salida = prompt('Desea hacer otro cálculo? SI o NO').toUpperCase()
-}
-alert('Gracias por usar nuestro calculador')
+})
+
 
 ///////////LE AGREGO UN FILTER SUPONIENDO QUE EL USUARIO HIZO UN CALCULO DE  UN MONTO DE 100000 PARA VOLVERLO A VISUALIZAR
 // const calculoBuscado = resultado.filter((prestamo) => prestamo.monto == 100000)
@@ -70,7 +71,7 @@ resultado.forEach((elem) => {
     listClonada.children[0].innerText = 'Su prestamo es de ' + elem.monto //li
     listClonada.children[1].innerText = 'En ' + elem.cantCuotas + ' cuotas'//l
     listClonada.children[2].innerText = 'Vas a devolver ' + elem.interes//li
-    listClonada.children[3].innerText = 'En ' + cantCuotas + ' de ' + elem.cuota //li
+    listClonada.children[3].innerText = 'En ' + elem.cantCuotas + ' cuotas de ' + elem.cuota //li
     
     section.appendChild(listClonada)
 })

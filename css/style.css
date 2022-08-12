@@ -32,8 +32,9 @@
 }
 
 .lista p {
-    font-size: 25px;
+    font-size: 22px;
     margin-bottom: 20px;
+    margin-left: 55px;
 }
 
 .inputs{
@@ -41,6 +42,7 @@
     width: 600px;
     display: flex;
     flex-direction: column;
+    margin-top: 65px;
     /* height: 200px; */
 }
 
@@ -52,11 +54,12 @@
 
 
 .botonCalcu{
-    padding-top: 25px;
+    padding-top: 15px;
     display: flex;
-    justify-content: center;
+    justify-content:flex-end;
     align-items: center;
     padding-bottom: 20px;
+    margin-right: 150px;
 }
 
 .calculadora {
@@ -68,6 +71,7 @@
     font-size: 18px;
     transition: 2s;
 }
+
 .calculadora:hover{
     background-color: cornflowerblue;
     color: white;

@@ -49,7 +49,6 @@ const list = temp.content.querySelector('div');
 
 resultado.forEach((elem) => {
     let listClonada = list.cloneNode(list,true);
-    console.log(listClonada.children[0].innerText);
     listClonada.children[0].innerText = 'Su prestamo es de ' + elem.monto //li
     listClonada.children[1].innerText = 'Vas a devolver ' + elem.interes//li
     listClonada.children[2].innerText = 'En ' + elem.cantCuotas + ' cuotas de ' + elem.cuota //li

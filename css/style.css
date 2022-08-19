@@ -5,15 +5,15 @@
 }
 nav{
     display: flex;
-    height: 60px;
     justify-content: center;
     align-items: center;
     background-color:rgb(238, 205, 16);
 }
 
 nav img {
-    width: 85px;
+    width: 140px;
     height: auto;
+    margin-bottom: 10px;
 }
 
 
@@ -84,6 +84,11 @@ nav img {
     height: 30px;
 }
 
+.inputs select{
+    width: 450px;
+    height: 30px;
+}
+
 
 .botonCalcu{
     padding-top: 15px;
@@ -111,13 +116,14 @@ nav img {
 
 #visualCalculos{
     display: flex;
+    flex-wrap: wrap;
     background-color: cornflowerblue;
-    height: 400px;
     justify-content: center;
 }
 
 .op-list {
     display: inline;
+    
     background-color: gold;
     padding-left: 25px;
     height: 280px;
@@ -128,6 +134,7 @@ nav img {
     padding-top: 20px;
     border-radius: 15px;
     margin-right: 15px;
+    margin-bottom: 25px;
 }
 
 .op-list p {

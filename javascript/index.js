@@ -1,5 +1,9 @@
 
 //========================Desafio complementario 3===========================
+const mantenerCard = () => {
+    localStorage.getItem('resultado')
+}
+mantenerCard()
 
 class Banco {
     constructor(monto, cantCuotas, interes, cuota) {
@@ -28,11 +32,11 @@ let cuota;
 let salida;
 
 const calculador = () => {
-    if (monto === 0) return(alert('Monto invalido'))
-    if (cantCuotas != 12 && cantCuotas != 24 && cantCuotas != 36 && cantCuotas != 48) return(alert('Monto invalido de cuotas'))
+    if (monto === 0) return (alert('Monto invalido'))
+    if (cantCuotas != 12 && cantCuotas != 24 && cantCuotas != 36 && cantCuotas != 48) return (alert('Monto invalido de cuotas'))
     interes = financiacion(monto, num, tasa, cantCuotas)
     cuota = cuotas(interes, cantCuotas)
-    
+
     const impCalculados = new Banco(monto, cantCuotas, interes, cuota)
     return impCalculados
 }
@@ -41,34 +45,63 @@ const calculador = () => {
 
 let resultado = []
 let form = document.getElementById("datos")
+let selectorCuotas = document.getElementById("lang").value
 
 
-form.addEventListener("submit", (e)=>{
+
+form.addEventListener("submit", (e) => {
     e.preventDefault()
     monto = document.querySelector('#monto').value
-    cantCuotas = document.querySelector('#cuotas').value
+    selectCuota = () => {
+        let selectorCuotas = document.getElementById("lang")
+        cantCuotas = selectorCuotas.value
+        return 
+    }
+    selectCuota(cantCuotas)
+    //cantCuotas = document.querySelector('#cuotas').value
     resultado.push(calculador())
-    console.log(resultado)
-    
+    console.log(cantCuotas)
+
     const section = document.querySelector('#visualCalculos')
     const temp = document.querySelector('template')
-    
+
     const list = temp.content.querySelector('div');
-    console.log("esta es la list",list)
-    
-    
-    const ultimoResultado = resultado[resultado.length-1]
-    let listClonada = list.cloneNode(list,true);
+    console.log("esta es la list", list)
+
+
+    const ultimoResultado = resultado[resultado.length - 1]
+    let listClonada = list.cloneNode(list, true);
     listClonada.children[0].innerText = 'Su prestamo es de ' + ultimoResultado.monto //li
     listClonada.children[1].innerText = 'Vas a devolver ' + ultimoResultado.interes.toFixed(2)//li
     listClonada.children[2].innerText = 'En ' + ultimoResultado.cantCuotas + ' cuotas de ' + ultimoResultado.cuota.toFixed(2) //li
-    
-    
+
+
     section.appendChild(listClonada)
     const calculosJSON = JSON.stringify(resultado)
     localStorage.setItem('resultado', calculosJSON)
 
 })
+
+function getStorage() {
+    const localStorageCalculo = JSON.parse(localStorage.getItem('resultado'));
+    const section = document.querySelector('#visualCalculos')
+    const temp = document.querySelector('template')
+
+    const list = temp.content.querySelector('div');
+
+    localStorageCalculo.map(result => {
+        let listClonada = list.cloneNode(list, true);
+        listClonada.children[0].innerText = 'Su prestamo es de ' + result.monto //li
+        listClonada.children[1].innerText = 'Vas a devolver ' + result.interes.toFixed(2)//li
+        listClonada.children[2].innerText = 'En ' + result.cantCuotas + ' cuotas de ' + result.cuota.toFixed(2) //li
+        section.appendChild(listClonada)
+    });
+};
+getStorage();
+
+
+
+
 
 /* const inputMonto = document.querySelector('#monto').value
 

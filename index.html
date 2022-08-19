@@ -67,40 +67,48 @@
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
-            </section>
-            <section class="cotizador">
-                <h1 class="titulo-princ">Cotizador de prestamos</h1>
-                <div class="formulario">
-                    <div class="lista">
-                        <p>Ingrese el importe del prestamo</p>
-                        <p>Ingrese la cantidad de cuotas 12 / 24 / 36 / 48 </p>
-                    </div>
-                    <form id="datos" class="inputs">
-                        <input type="number" id="monto">
-                        <input type="text" id="cuotas">
-                        <div class="botonCalcu">
-                            <button id="btn-submit" type="submit" class="calculadora">Calcular</button>
-                        </div>
-                    </form>
+        </section>
+        <section class="cotizador">
+            <h1 class="titulo-princ">Cotizador de prestamos</h1>
+            <div class="formulario">
+                <div class="lista">
+                    <p>Ingrese el importe del prestamo</p>
+                    <p>Ingrese la cantidad de cuotas</p>
                 </div>
-            </section>
-            <!-- <div class="mb-3 row">
+                <form id="datos" class="inputs">
+                    <input type="number" id="monto">
+                    <!-- aca voy agregar otro input -->
+                    <select name="lenguajes" id="lang">
+                        <option>Selecciona cuotas</option>
+                        <option value="12" id="cuotas1">12</option>
+                        <option value="24" id="cuotas2">24</option>
+                        <option value="36" id="cuotas3">36</option>
+                        <option value="48" id="cuotas4">48</option>
+                    </select>
+                    <!-- <input type="text" id="cuotas"> -->
+                    <div class="botonCalcu">
+                        <button id="btn-submit" type="submit" class="calculadora">Calcular</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <!-- <div class="mb-3 row">
                 <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
                 <div class="col-sm-10">
                     <input type="password" class="form-control" id="inputPassword">
                 </div> 
             </div>-->
-            <section id="visualCalculos">
-                <template>
-                    <div class="op-list">
-                        <p>Valor del prestamo</p>
-                        <p>Monto total</p>
-                        <p>Valor de cuota</p>
-                        <button>Solicitar</button>
-                    </div>
-                </template>
-                <div id=""></div>
-            </section>
+        <section id="visualCalculos">
+            <template>
+                <div class="op-list">
+                    <p>Valor del prestamo</p>
+                    <p>Monto total</p>
+                    <p>Valor de cuota</p>
+                    <button>Solicitar</button>
+                </div>
+            </template>
+            <div id=""></div>
+        </section>
     </main>
     <script src="./javascript/index.js"></script>
 </body>

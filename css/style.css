@@ -3,11 +3,43 @@
     padding: 0;
     box-sizing: border-box;
 }
+nav{
+    display: flex;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    background-color:rgb(238, 205, 16);
+}
+
+nav img {
+    width: 85px;
+    height: auto;
+}
+
 
 .hero-section{
     width: 100%;
-    background-color:gold;
+    /* background-color:gold; */
     justify-content: center;
+    display: flex;
+}
+
+.carousel{
+    padding-top: 25px;
+    /* padding-bottom: 25px; */
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+}
+
+.imagen-carru {
+    height: 500px;
+    width: 60%;
+}
+
+.cotizador{
+    background-color:gold;
+    margin-top: 25px;
 }
 
 .titulo-princ{
@@ -86,13 +118,13 @@
 
 .op-list {
     display: inline;
-    background-color: beige;
+    background-color: gold;
     padding-left: 25px;
-    height: 200px;
+    height: 280px;
     width: 300px;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 10px;
     padding-top: 20px;
     border-radius: 15px;
     margin-right: 15px;
@@ -103,8 +135,12 @@
 }
 
 .op-list button{
+    width: 110px;
+    height: 35px;
     margin-left: 70px;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 25px;
+    background-color: #59CE8F;
+    font-size: 16px;
 }
 

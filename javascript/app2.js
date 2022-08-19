@@ -24,9 +24,7 @@ let cuota;
 let salida;
 
 const calculador = () => {
-    monto = Number(prompt('Indique el monto que desea financiar'))
     if (monto === 0) return (alert('Monto invalido'))
-    cantCuotas = Number(prompt('Ingrese la cantidad de cuotas: 12 / 24 / 36 / 48'))
     if (cantCuotas != 12 && cantCuotas != 24 && cantCuotas != 36 && cantCuotas != 48) return (alert('Monto invalido de cuotas'))
     interes = financiacion(monto, num, tasa, cantCuotas)
     cuota = cuotas(interes, cantCuotas)
@@ -35,23 +33,34 @@ const calculador = () => {
     return impCalculados
 }
 
+const inputMonto = document.querySelector('#monto')
+const inputCuotas = document.querySelector('#cuotas')
+const form = document.querySelector('#datos')
 let resultado = []
-while (salida != 'NO') {
+/*while (salida != 'NO') {
     resultado.push(calculador())
     salida = prompt('Desea hacer otro cálculo? SI o NO').toUpperCase()
 }
-alert('Gracias por usar nuestro calculador')
+alert('Gracias por usar nuestro calculador')*/
+form.addEventListener("submit", (e) => {
+    e.preventDefault()
+
+    monto = inputMonto.value
+    cantCuotas = inputCuotas.value
+    calculador()
+    resultado.push(calculador())
+})
+
 
 const section = document.querySelector('#visualCalculos')
 const temp = document.querySelector('template')
-
 const list = temp.content.querySelector('div');
 
 resultado.forEach((elem) => {
     let listClonada = list.cloneNode(list,true);
     listClonada.children[0].innerText = 'Su prestamo es de ' + elem.monto //li
     listClonada.children[1].innerText = 'Vas a devolver ' + elem.interes//li
-    listClonada.children[2].innerText = 'En ' + elem.cantCuotas + ' cuotas de ' + elem.cuota //li
+    listClonada.children[2].innerText = 'En ' + elem.cantCuotas + ' cuotas de ' + elem.cuota.toFidex(2) //li
     
     section.appendChild(listClonada)
 })

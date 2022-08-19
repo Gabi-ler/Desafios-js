@@ -41,33 +41,34 @@ const calculador = () => {
 
 let resultado = []
 let form = document.getElementById("datos")
+
+
 form.addEventListener("submit", (e)=>{
     e.preventDefault()
     monto = document.querySelector('#monto').value
-    console.log(monto)
     cantCuotas = document.querySelector('#cuotas').value
-    console.log(cantCuotas)
     resultado.push(calculador())
     console.log(resultado)
-
+    
     const section = document.querySelector('#visualCalculos')
     const temp = document.querySelector('template')
     
     const list = temp.content.querySelector('div');
     console.log("esta es la list",list)
     
-
+    
     const ultimoResultado = resultado[resultado.length-1]
-        let listClonada = list.cloneNode(list,true);
-        console.log("esta es la lista clonada",listClonada)
-        console.log("este es el children 0",listClonada.children[0].innerText);
-        listClonada.children[0].innerText = 'Su prestamo es de ' + ultimoResultado.monto //li
-        listClonada.children[1].innerText = 'Vas a devolver ' + ultimoResultado.interes//li
-        listClonada.children[2].innerText = 'En ' + ultimoResultado.cantCuotas + ' cuotas de ' + ultimoResultado.cuota //li
-        
-        section.appendChild(listClonada)
-})
+    let listClonada = list.cloneNode(list,true);
+    listClonada.children[0].innerText = 'Su prestamo es de ' + ultimoResultado.monto //li
+    listClonada.children[1].innerText = 'Vas a devolver ' + ultimoResultado.interes.toFixed(2)//li
+    listClonada.children[2].innerText = 'En ' + ultimoResultado.cantCuotas + ' cuotas de ' + ultimoResultado.cuota.toFixed(2) //li
+    
+    
+    section.appendChild(listClonada)
+    const calculosJSON = JSON.stringify(resultado)
+    localStorage.setItem('resultado', calculosJSON)
 
+})
 
 /* const inputMonto = document.querySelector('#monto').value
 

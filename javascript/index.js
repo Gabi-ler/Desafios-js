@@ -1,5 +1,6 @@
 
-//========================Desafio complementario 3===========================
+//========================Desafio complementario 5===========================
+//----------------Funcion para mantener calculos en localStorage
 const mantenerCard = () => {
     localStorage.getItem('resultado')
 }
@@ -7,6 +8,7 @@ mantenerCard()
 
 class Banco {
     constructor(monto, cantCuotas, interes, cuota) {
+        // this.id = id
         this.monto = monto
         this.cantCuotas = cantCuotas
         this.interes = interes
@@ -31,6 +33,7 @@ let interes;
 let cuota;
 let salida;
 
+//----------------Funcion que integra el calculo princiapl del prestamo
 const calculador = () => {
     if (monto === 0) return (alert('Monto invalido'))
     if (cantCuotas != 12 && cantCuotas != 24 && cantCuotas != 36 && cantCuotas != 48) return (alert('Monto invalido de cuotas'))
@@ -41,32 +44,29 @@ const calculador = () => {
     return impCalculados
 }
 
-//Probando con evento del form
-
+//---------------Trayendo template del HTML
 let resultado = []
 let form = document.getElementById("datos")
-let selectorCuotas = document.getElementById("lang").value
 
 
-
+//----------------Evento aplicado al boton calcular
 form.addEventListener("submit", (e) => {
     e.preventDefault()
     monto = document.querySelector('#monto').value
     selectCuota = () => {
         let selectorCuotas = document.getElementById("lang")
         cantCuotas = selectorCuotas.value
-        return 
+        return
     }
     selectCuota(cantCuotas)
-    //cantCuotas = document.querySelector('#cuotas').value
     resultado.push(calculador())
-    console.log(cantCuotas)
 
+    //-----------------Renderizado de calculos
     const section = document.querySelector('#visualCalculos')
     const temp = document.querySelector('template')
 
     const list = temp.content.querySelector('div');
-    console.log("esta es la list", list)
+    console.log(list)
 
 
     const ultimoResultado = resultado[resultado.length - 1]
@@ -74,14 +74,23 @@ form.addEventListener("submit", (e) => {
     listClonada.children[0].innerText = 'Su prestamo es de ' + ultimoResultado.monto //li
     listClonada.children[1].innerText = 'Vas a devolver ' + ultimoResultado.interes.toFixed(2)//li
     listClonada.children[2].innerText = 'En ' + ultimoResultado.cantCuotas + ' cuotas de ' + ultimoResultado.cuota.toFixed(2) //li
-
-
+    
     section.appendChild(listClonada)
     const calculosJSON = JSON.stringify(resultado)
     localStorage.setItem('resultado', calculosJSON)
+    })
+ /*resultado.forEach((elem) => {
+    let listClonada = list.cloneNode(list, true);
+    listClonada.children[0].innerText = 'Su prestamo es de ' + elem.monto //li
+    listClonada.children[1].innerText = 'Vas a devolver ' + elem.interes.toFixed(2)//li
+    listClonada.children[2].innerText = 'En ' + elem.cantCuotas + ' cuotas de ' + elem.cuota.toFixed(2) //li
+    
+    section.appendChild(listClonada)
+    const calculosJSON = JSON.stringify(resultado)
+    localStorage.setItem('resultado', calculosJSON)
+    })*/
 
-})
-
+//------------------Funcion para mantener en el local storage y no se pierdan al actualizar
 function getStorage() {
     const localStorageCalculo = JSON.parse(localStorage.getItem('resultado'));
     const section = document.querySelector('#visualCalculos')
@@ -99,31 +108,17 @@ function getStorage() {
 };
 getStorage();
 
+//Evento
+const borrarCard = document.querySelector('#delete')
+borrarCard.addEventListener("click", () => {
+    localStorage.removeItem('resultado')
+})
 
-
-
-
-/* const inputMonto = document.querySelector('#monto').value
-
-const inputCuotas = document.querySelector('#cuotas')
-const form = document.querySelector('#datos')
-
-let resultado = []
-
-form.addEventListener("submit", (e) => {
-    e.preventDefault()
-
-    monto = inputMonto.value
-    cantCuotas = inputCuotas.value
-    calculador()
-    resultado.push(calculador())
-}) */
 
 
 ///////////LE AGREGO UN FILTER SUPONIENDO QUE EL USUARIO HIZO UN CALCULO DE  UN MONTO DE 100000 PARA VOLVERLO A VISUALIZAR
 // const calculoBuscado = resultado.filter((prestamo) => prestamo.monto == 100000)
-// console.log(calculoBuscado);
-//intentar mostrar las distintos calculos que hizo el cliente sobre sus prestamos y que despues úeda ver cual le convienetu
+
 //MIRAR LA DIAPOSITIVA 7 QUE SALE UN EJEMPLO DE FUNCION SUPERIOR PRARA ACUMULAR LOS OBJTOS
 
 

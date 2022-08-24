@@ -117,14 +117,13 @@ nav img {
 #visualCalculos{
     display: flex;
     flex-wrap: wrap;
-    background-color: cornflowerblue;
+    background-color: gold;
     justify-content: center;
 }
 
 .op-list {
     display: inline;
-    
-    background-color: gold;
+    background-color: cornflowerblue;
     padding-left: 25px;
     height: 280px;
     width: 300px;
@@ -135,10 +134,12 @@ nav img {
     border-radius: 15px;
     margin-right: 15px;
     margin-bottom: 25px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,.4),0 2px 4px -1px rgba(0,0,0,.5);
 }
 
 .op-list p {
     font-size: 18px;
+    color: white;
 }
 
 .op-list button{
@@ -146,8 +147,13 @@ nav img {
     height: 35px;
     margin-left: 70px;
     justify-content: center;
-    margin-top: 25px;
+    margin-top: 18px;
     background-color: #59CE8F;
     font-size: 16px;
+}
+
+.op-list .borrar{
+    background-color: red;
+    color: white;
 }
 

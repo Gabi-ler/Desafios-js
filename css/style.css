@@ -117,7 +117,7 @@ nav img {
 #visualCalculos{
     display: flex;
     flex-wrap: wrap;
-    background-color: gold;
+    background-color: #ffd700;
     justify-content: center;
 }
 

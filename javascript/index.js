@@ -8,7 +8,7 @@ mantenerCard()
 
 class Banco {
     constructor(monto, cantCuotas, interes, cuota) {
-        // this.id = id
+        this.id = Math.random().toString(36).substring(2, 9);
         this.monto = monto
         this.cantCuotas = cantCuotas
         this.interes = interes
@@ -33,10 +33,18 @@ let interes;
 let cuota;
 let salida;
 
-//----------------Funcion que integra el calculo princiapl del prestamo
+//----------------Funcion que integra el calculo princiapl del prestamo----
 const calculador = () => {
-    if (monto === 0) return (alert('Monto invalido'))
-    if (cantCuotas != 12 && cantCuotas != 24 && cantCuotas != 36 && cantCuotas != 48) return (alert('Monto invalido de cuotas'))
+    if (monto === 0) return //(alert('Monto invalido'))
+    if (cantCuotas != 12 && cantCuotas != 24 && cantCuotas != 36 && cantCuotas != 48) return (
+        (Swal.fire({
+            title: 'Inválido',
+            text: 'Seleccione el monto de cuotas',
+            icon: 'warning',
+            showConfirmButton: false,
+            timer: 2500
+        })))
+
     interes = financiacion(monto, num, tasa, cantCuotas)
     cuota = cuotas(interes, cantCuotas)
 
@@ -66,29 +74,42 @@ form.addEventListener("submit", (e) => {
     const temp = document.querySelector('template')
 
     const list = temp.content.querySelector('div');
-    console.log(list)
+    // console.log(list)
 
 
     const ultimoResultado = resultado[resultado.length - 1]
     let listClonada = list.cloneNode(list, true);
+    listClonada.id = ultimoResultado.id;
     listClonada.children[0].innerText = 'Su prestamo es de ' + ultimoResultado.monto //li
     listClonada.children[1].innerText = 'Vas a devolver ' + ultimoResultado.interes.toFixed(2)//li
     listClonada.children[2].innerText = 'En ' + ultimoResultado.cantCuotas + ' cuotas de ' + ultimoResultado.cuota.toFixed(2) //li
-    
+
     section.appendChild(listClonada)
+
+    const borrarCard = document.querySelectorAll('.borrar');
+    borrarCard.forEach(buttonDelete => buttonDelete.addEventListener("click", (event) => {
+        event.target.parentElement.remove();
+        // agregar codigo pra eliminar del localStorage por id
+    }));
+    //para ver la node list que me creando
+    console.log(borrarCard);
+    console.log(ultimoResultado);
+    console.log(listClonada);
+
     const calculosJSON = JSON.stringify(resultado)
     localStorage.setItem('resultado', calculosJSON)
-    })
- /*resultado.forEach((elem) => {
-    let listClonada = list.cloneNode(list, true);
-    listClonada.children[0].innerText = 'Su prestamo es de ' + elem.monto //li
-    listClonada.children[1].innerText = 'Vas a devolver ' + elem.interes.toFixed(2)//li
-    listClonada.children[2].innerText = 'En ' + elem.cantCuotas + ' cuotas de ' + elem.cuota.toFixed(2) //li
-    
-    section.appendChild(listClonada)
-    const calculosJSON = JSON.stringify(resultado)
-    localStorage.setItem('resultado', calculosJSON)
-    })*/
+})
+
+/*resultado.forEach((elem) => {
+   let listClonada = list.cloneNode(list, true);
+   listClonada.children[0].innerText = 'Su prestamo es de ' + elem.monto //li
+   listClonada.children[1].innerText = 'Vas a devolver ' + elem.interes.toFixed(2)//li
+   listClonada.children[2].innerText = 'En ' + elem.cantCuotas + ' cuotas de ' + elem.cuota.toFixed(2) //li
+   
+   section.appendChild(listClonada)
+   const calculosJSON = JSON.stringify(resultado)
+   localStorage.setItem('resultado', calculosJSON)
+   })*/
 
 //------------------Funcion para mantener en el local storage y no se pierdan al actualizar
 function getStorage() {
@@ -105,14 +126,22 @@ function getStorage() {
         listClonada.children[2].innerText = 'En ' + result.cantCuotas + ' cuotas de ' + result.cuota.toFixed(2) //li
         section.appendChild(listClonada)
     });
-};
+
+    const borrarCard = document.querySelectorAll('.borrar');
+    borrarCard.forEach(buttonDelete => buttonDelete.addEventListener("click", (event) => {
+        event.target.parentElement.remove();
+        // agregar codigo pra eliminar del localStorage por id
+    }));
+    
+
+}
 getStorage();
 
 //Evento
-const borrarCard = document.querySelector('#delete')
-borrarCard.addEventListener("click", () => {
-    localStorage.removeItem('resultado')
-})
+// const borrarCard = document.querySelector('#delete')
+// borrarCard.addEventListener("click", () => {
+//     localStorage.removeItem('resultado')
+// })
 
 
 

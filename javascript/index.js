@@ -91,6 +91,8 @@ form.addEventListener("submit", (e) => {
         event.target.parentElement.remove();
         // agregar codigo pra eliminar del localStorage por id
     }));
+
+    
     //para ver la node list que me creando
     console.log(borrarCard);
     console.log(ultimoResultado);
@@ -137,17 +139,64 @@ function getStorage() {
 }
 getStorage();
 
-//Evento
-// const borrarCard = document.querySelector('#delete')
-// borrarCard.addEventListener("click", () => {
-//     localStorage.removeItem('resultado')
-// })
 
 
+//--------- Código conversor con API ---------------
+/*fetch('https://jsonplaceholder.typicode.com/posts', {
+    method: 'POST',
+    headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+    },
+    body: JSON.stringify({
+        title: 'Hola Gabi',
+        body: 'un mensaje generico',
+        userId: 10
+    })
+})
+    .then((resp) => {
+        return resp.json()
+    })
+    .then((data) => {
+        console.log(data);
+    })*/
 
-///////////LE AGREGO UN FILTER SUPONIENDO QUE EL USUARIO HIZO UN CALCULO DE  UN MONTO DE 100000 PARA VOLVERLO A VISUALIZAR
-// const calculoBuscado = resultado.filter((prestamo) => prestamo.monto == 100000)
+const monedaUno = document.querySelector('#moneda-uno')
+const monedaDos = document.querySelector('#moneda-dos')
+const cantidadUno = document.querySelector('#cantidad-uno')
+const cantidadDos = document.querySelector('#cantidad-dos')
+const cambio = document.querySelector('#cambio')
+const tazael = document.querySelector('#taza')
 
-//MIRAR LA DIAPOSITIVA 7 QUE SALE UN EJEMPLO DE FUNCION SUPERIOR PRARA ACUMULAR LOS OBJTOS
+//fetch exchange rate and update
+const conversor = () => {
+    const moneda1 = monedaUno.value
+    const moneda2 = monedaDos.value
+
+    fetch(`https://api.exchangerate-api.com/v4/latest/${moneda1}`)
+        .then(res => res.json())
+        .then(data => {
+            const taza = data.rates[moneda2];
+            
+            cambio.innerText = `1 ${moneda1} = ${taza} ${moneda2}`;
+
+            cantidadDos.value = (cantidadUno.value * taza).toFixed(2);
+
+        });
+}
+
+
+monedaUno.addEventListener('change', calculador);
+cantidadUno.addEventListener('input', calculador);
+monedaDos.addEventListener('change', calculador);
+cantidadDos.addEventListener('input', calculador);
+
+taza.addEventListener('click', () => {
+    const temp = monedaUno.value
+    monedaUno.value = monedaDos.value
+    monedaDos.value = temp
+
+    conversor();
+})
+conversor()
 
 

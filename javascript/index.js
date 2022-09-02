@@ -185,10 +185,10 @@ const conversor = () => {
 }
 
 
-monedaUno.addEventListener('change', calculador);
-cantidadUno.addEventListener('input', calculador);
-monedaDos.addEventListener('change', calculador);
-cantidadDos.addEventListener('input', calculador);
+monedaUno.addEventListener('change', conversor);
+cantidadUno.addEventListener('input', conversor);
+monedaDos.addEventListener('change', conversor);
+cantidadDos.addEventListener('input', conversor);
 
 taza.addEventListener('click', () => {
     const temp = monedaUno.value
